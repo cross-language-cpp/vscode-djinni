@@ -1,0 +1,29 @@
+{
+    "name": "djinni-syntax-highlighting",
+    "displayName": "Djinni Syntax Highlighting",
+    "description": "Syntac highlighting for djinni interface files",
+    "version": "1.0.0",
+    "author": {
+        "name": "Patrik Minder"
+    },
+    "homepage": "https://github.com/Durza007/vscode-djinni",
+    "engines": {
+        "vscode": "^1.30.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "djinni",
+            "aliases": ["Djinni", "djinni"],
+            "extensions": [".djinni"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "djinni",
+            "scopeName": "text.djinni",
+            "path": "./syntaxes/djinni.tmLanguage.json"
+        }]
+    }
+}

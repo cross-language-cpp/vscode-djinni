@@ -1,0 +1,330 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Djinni",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#comment"
+		},
+		{
+			"include": "#enum"
+		},
+		{
+			"include": "#flags"
+		},
+		{
+			"include": "#record"
+		},
+		{
+			"include": "#interface"
+		},
+		{
+			"include": "#strings"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.djinni",
+					"match": "(^|$|\\W)(@import|if|while|for|return)(^|$|\\W)"
+				}
+			]
+		},
+		"types": {
+			"patterns": [
+				{
+					"name": "entity.name.type",
+					"match": "\\b(bool|i8|i16|i32|i64|f32|f64|string|binary|date)\\b"
+				},
+				{
+					"name": "keyword.operator.djinni",
+					"begin": "(list|set|optional|map)(<)",
+					"beginCaptures": {
+						"1": { "name": "entity.name.class" },
+						"2": { "name": "keyword.operator.djinni" }
+					},
+					"end": ">",
+					"patterns": [
+						{
+							"include": "#types"
+						},
+						{
+							"match": ",",
+							"name": "punctuation.separator.comma.djinni"
+						},
+						{
+							"match": "\\w+",
+							"name": "entity.name.class"
+						}
+					]
+				}
+			]
+		},
+		"enum": {
+			"patterns": [
+				{
+					"begin": "(\\w+)\\s*(=)\\s*(enum)\\s*{",
+					"beginCaptures": {
+						"1": { "name": "variable.name" },
+						"2": { "name": "keyword.operator.djinni" },
+						"3": { "name": "keyword.control.djinni" }
+					},
+					"end": "}",
+					"patterns": [
+						{
+							"begin": "(\\w+)(;)",
+							"beginCaptures": {
+								"1": { "name": "variable.name" },
+								"2": { "name": "keyword.operator.djinni" }
+							},
+							"end": ""
+						}
+					]
+				}
+			]
+		},
+		"flags": {
+			"patterns": [
+				{
+					"begin": "(\\w+)\\s*(=)\\s*(flags)\\s*({)",
+					"beginCaptures": {
+						"1": { "name": "variable.name" },
+						"2": { "name": "keyword.operator.djinni" },
+						"3": { "name": "keyword.control.djinni" },
+						"4": { "name": "punctuation.definition.block.djinni" }
+					},
+					"end": "(})",
+					"endCaptures": {
+						"1": { "name": "punctuation.definition.block.djinni" }
+					},
+					"patterns": [
+						{
+							"begin": "(\\w+)(\\s*(=)\\s*(none|all))?(;)",
+							"beginCaptures": {
+								"1": { "name": "variable.name" },
+								"3": { "name": "keyword.operator.djinni" },
+								"4": { "name": "keyword.control.djinni" }
+							},
+							"end": ""
+						}
+					]
+				}
+			]
+		},
+		"record": {
+			"patterns": [
+				{
+					"begin": "(\\w+)\\s*(=)\\s*(record)\\s*({)",
+					"beginCaptures": {
+						"1": { "name": "variable.name" },
+						"2": { "name": "keyword.operator.djinni" },
+						"3": { "name": "keyword.control.djinni" },
+						"4": { "name": "punctuation.definition.block.djinni" }
+					},
+					"end": "(})(\\s*(deriving)\\s\\([^\\)]*\\))?",
+					"endCaptures": {
+						"1": { "name": "punctuation.definition.block.djinni" },
+						"3": { "name": "storage.modifier" }
+					},
+					"patterns": [
+						{
+							"begin": "(\\w+)\\s*(:)",
+							"beginCaptures": {
+								"1": { "name": "variable.name" },
+								"2": { "name": "keyword.operator.djinni" }
+							},
+							"end": "(;)",
+							"endCaptures": {
+								"1": { "name": "keyword.operator.djinni" }
+							},
+							"patterns": [
+								{
+									"include": "#types"
+								}
+							]
+						},
+						{
+							"include": "#comment"
+						},
+						{
+							"include": "#constant-property"
+						}
+					]
+				}
+			]
+		},
+		"interface": {
+			"patterns": [
+				{
+					"begin": "(\\w+)\\s*(=)\\s*(interface)\\s+((\\+[cjo]\\s+)*)({)",
+					"beginCaptures": {
+						"1": { "name": "variable.name" },
+						"2": { "name": "keyword.operator.djinni" },
+						"3": { "name": "keyword.control.djinni" },
+						"4": { "name": "entity.name.tag" }
+					},
+					"end": "}",
+					"patterns": [
+						{
+							"name": "meta.method.djinni",
+							"begin": "(static\\s+)?(\\w+)\\s*(\\()",
+							"beginCaptures": {
+								"1": { "name": "storage.modifier" },
+								"2": { "name": "entity.name.function" },
+								"3": { "name": "meta.brace.round" }
+
+							},
+							"end": "(\\))(\\s*(:)([^;]*))?(;)",
+							"endCaptures": {
+								"1": { "name": "meta.brace.round" },
+								"3": { "name": "keyword.operator.type.annotation.djinni" },
+								"4": {
+									"patterns": [
+										{ "include": "#types" }
+									]
+								},
+								"5": { "name": "punctuation.terminator" }
+							},
+							"patterns": [
+								{
+									"match": "\\s*(\\w+)\\s*(:)([^,\\)]*)",
+									"captures": {
+										"1": { "name": "variable.parameter.djinni" },
+										"2": { "name": "keyword.operator.type.annotation.djinni" },
+										"3": {
+											"patterns": [
+												{
+													"include": "#types"
+												}
+											]
+										}
+									}
+								},
+								{
+									"include": "#comma"
+								}
+							]
+						},
+						{
+							"include": "#comment"
+						},
+						{
+							"include": "#constant-property"
+						}
+					]
+				}
+			]
+		},
+		"constant-property": {
+			"patterns": [
+				{
+					"name": "constant.other.djinni",
+					"begin": "(const)\\s+(\\w+)\\s*(:)\\s*([^=]+)\\s*(=)",
+					"beginCaptures": {
+						"1": { "name": "storage.modifier" },
+						"2": { "name": "variable.name" },
+						"3": { "name": "keyword.operator.type.annotation.djinni" },
+						"4": {
+							"patterns": [
+								{
+									"include": "#types"
+								}
+							]
+						},
+						"5": { "name": "keyword.operator.assignment.djinni" }
+					},
+					"end": "(;)",
+					"endCaptures": {
+						"1": { "name": "punctuation.terminator" }
+					},
+					"patterns": [
+						{
+							"include": "#value-literal"
+						}
+					]
+				}
+			]
+		},
+		"value-literal": {
+			"patterns": [
+				{
+					"name": "meta.object-literal.djinni",
+					"begin": "{",
+					"end": "}",
+					"patterns": [
+						{
+							"include": "#comma"
+						},
+						{
+							"name": "constant.other.property.djinni",
+							"begin": "(\\w+)\\s*(=)",
+							"beginCaptures": {
+								"1": { "name": "meta.object-literal.key.djinni" },
+								"2": { "name": "keyword.operator.assignment.djinni" }
+							},
+							"end": "(?=[,}])",
+							"endCaptures": {
+								"1": { "name": "punctuation.terminator" }
+							},
+							"patterns": [
+								{
+									"include": "#value-literal"
+								}
+							]
+						}
+					]
+				},
+				{
+					"include": "#strings"
+				},
+				{
+					"include": "#numbers"
+				}
+			]
+		},
+		"comment": {
+			"patterns": [
+				{
+					"begin": "(#)",
+					"beginCaptures": {
+						"1": { "name": "comment.line.hashtag.djinni" }
+					},
+					"end": "(?=$)",
+					"contentName": "comment.line.hashtag.djinni"
+				}
+			]
+		},
+		"numbers": {
+			"name": "",
+			"patterns": [
+				{
+					"match": "\\d+",
+					"name": "constant.numeric.djinni"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.djinni",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.djinni",
+					"match": "\\\\."
+				}
+			]
+		},
+		"comma": {
+			"patterns":[
+				{
+					"match": ",",
+					"name": "punctuation.separator.comma.djinni"
+				}
+			]
+		}
+	},
+	"scopeName": "text.djinni"
+}
