@@ -36,14 +36,14 @@
 		"types": {
 			"patterns": [
 				{
-					"name": "entity.name.type",
+					"name": "constant.language",
 					"match": "\\b(bool|i8|i16|i32|i64|f32|f64|string|binary|date)\\b"
 				},
 				{
 					"name": "keyword.operator.djinni",
 					"begin": "(list|set|optional|map)(<)",
 					"beginCaptures": {
-						"1": { "name": "entity.name.class" },
+						"1": { "name": "constant.language" },
 						"2": { "name": "keyword.operator.djinni" }
 					},
 					"end": ">",
@@ -52,21 +52,20 @@
 							"include": "#types"
 						},
 						{
-							"match": ",",
-							"name": "punctuation.separator.comma.djinni"
-						},
-						{
-							"match": "\\w+",
-							"name": "entity.name.class"
+							"include": "#comma"
 						}
 					]
+				},
+				{
+					"match": "\\w+",
+					"name": "entity.name.class"
 				}
 			]
 		},
 		"enum": {
 			"patterns": [
 				{
-					"begin": "(\\w+)\\s*(=)\\s*(enum)\\s*{",
+					"begin": "(\\w+)\\s*(=)\\s*(enum)[\\s\\n]*{",
 					"beginCaptures": {
 						"1": { "name": "variable.name" },
 						"2": { "name": "keyword.operator.djinni" },

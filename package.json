@@ -3,10 +3,15 @@
     "displayName": "Djinni Syntax Highlighting",
     "description": "Syntac highlighting for djinni interface files",
     "version": "1.0.0",
+    "publisher": "patrikminder",
     "author": {
         "name": "Patrik Minder"
     },
     "homepage": "https://github.com/Durza007/vscode-djinni",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Durza007/vscode-djinni"
+    },
     "engines": {
         "vscode": "^1.30.0"
     },
