@@ -80,6 +80,9 @@
 								"2": { "name": "keyword.operator.djinni" }
 							},
 							"end": ""
+						},
+						{
+							"include": "#comment"
 						}
 					]
 				}
@@ -108,6 +111,9 @@
 								"4": { "name": "keyword.control.djinni" }
 							},
 							"end": ""
+						},
+						{
+							"include": "#comment"
 						}
 					]
 				}
