@@ -122,12 +122,13 @@
 		"record": {
 			"patterns": [
 				{
-					"begin": "(\\w+)\\s*(=)\\s*(record)\\s*({)",
+					"begin": "(\\w+)\\s*(=)\\s*(record)\\s+((\\+[cjo]\\s+)*)({)",
 					"beginCaptures": {
 						"1": { "name": "variable.name" },
 						"2": { "name": "keyword.operator.djinni" },
 						"3": { "name": "keyword.control.djinni" },
-						"4": { "name": "punctuation.definition.block.djinni" }
+						"4": { "name": "entity.name.tag" },
+						"5": { "name": "punctuation.definition.block.djinni" }
 					},
 					"end": "(})(\\s*(deriving)\\s\\([^\\)]*\\))?",
 					"endCaptures": {
