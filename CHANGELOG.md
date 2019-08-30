@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.0.3
+- Fixed not handling enums and flags correctly
+
 ## 1.0.2
 - Fixed not higlighting record extensions correctly
 

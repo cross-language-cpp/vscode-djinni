@@ -74,12 +74,19 @@
 					"end": "}",
 					"patterns": [
 						{
-							"begin": "(\\w+)(;)",
+							"begin": "(\\w+)",
 							"beginCaptures": {
-								"1": { "name": "variable.name" },
-								"2": { "name": "keyword.operator.djinni" }
+								"1": { "name": "variable.name" }
 							},
-							"end": ""
+							"end": "(;)",
+							"endCaptures": {
+								"1": { "name": "keyword.operator.djinni" }
+							},
+							"patterns": [
+								{
+									"include": "#comment"
+								}
+							]
 						},
 						{
 							"include": "#comment"
@@ -104,13 +111,20 @@
 					},
 					"patterns": [
 						{
-							"begin": "(\\w+)(\\s*(=)\\s*(none|all))?(;)",
+							"begin": "(\\w+)(\\s*(=)\\s*(none|all))?",
 							"beginCaptures": {
 								"1": { "name": "variable.name" },
-								"3": { "name": "keyword.operator.djinni" },
-								"4": { "name": "keyword.control.djinni" }
+								"3": { "name": "keyword.operator.djinni" }
 							},
-							"end": ""
+							"end": "(;)",
+							"endCaptures": {
+								"1": { "name": "keyword.control.djinni" }
+							},
+							"patterns": [
+								{
+									"include": "#comment"
+								}
+							]
 						},
 						{
 							"include": "#comment"
@@ -304,7 +318,7 @@
 			]
 		},
 		"numbers": {
-			"name": "",
+			"name": "constant.numeric.djinni",
 			"patterns": [
 				{
 					"match": "\\d+",

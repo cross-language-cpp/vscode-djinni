@@ -2,7 +2,7 @@
     "name": "djinni-syntax-highlighting",
     "displayName": "Djinni Syntax Highlighting",
     "description": "Syntax highlighting for djinni interface files",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "publisher": "patrikminder",
     "author": {
         "name": "Patrik Minder"
