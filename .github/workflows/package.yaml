@@ -1,0 +1,25 @@
+on: [push, pull_request]
+
+name: Package Extension
+
+jobs:
+  package:
+    name: Package Plugin
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Install Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 10.x
+    - run: npm install
+    - name: Package
+      run: npm run package
+    - name: Determine Artifact Name
+      run: echo "ARTIFACT_NAME=djinni-syntax-highlighting-$(semver $(git describe --tags)).vsix" >> $GITHUB_ENV
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: plugin-artifact
+        path: ./${{ env.ARTIFACT_NAME }}

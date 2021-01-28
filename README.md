@@ -1,8 +1,12 @@
 # Djinni interface support for vscode
 
-Really basic syntax highlighting for djinni interface files.  
-More information about djinni: [https://github.com/dropbox/djinni]()  
-Visual Studio Code: [https://code.visualstudio.com/]()
+![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/cross-language-cpp.djinni-syntax-highlighting)
+![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/cross-language-cpp.djinni-syntax-highlighting)
+
+
+Really basic syntax highlighting for djinni interface files.
+
+More information about djinni: [djinni.xlcpp.dev](https://djinni.xlcpp.dev/)  
 
 ## Features
 
@@ -10,4 +14,4 @@ Visual Studio Code: [https://code.visualstudio.com/]()
 
 ## License
 
-MIT
+[MIT](https://mit-license.org/)
