@@ -4,7 +4,7 @@ name: Package Extension
 
 jobs:
   package:
-    name: Package Plugin
+    name: Package Extension
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
