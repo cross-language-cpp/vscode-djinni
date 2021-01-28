@@ -17,7 +17,7 @@ jobs:
     - name: Package
       run: npm run package
     - name: Determine Artifact Name
-      run: echo "ARTIFACT_NAME=djinni-syntax-highlighting-$(semver $(git describe --tags)).vsix" >> $GITHUB_ENV
+      run: echo "ARTIFACT_NAME=djinni-syntax-highlighting-$(npm run determineVersion --silent).vsix" >> $GITHUB_ENV
     - name: Upload Artifact
       uses: actions/upload-artifact@v1
       with:

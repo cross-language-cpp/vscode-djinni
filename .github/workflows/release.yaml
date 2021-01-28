@@ -21,7 +21,7 @@ jobs:
       env:
         VSCE_PAT: ${{ secrets.VSCE_PAT }}
     - name: Determine Artifact Name
-        run: echo "ARTIFACT_NAME=djinni-syntax-highlighting-$(npm run semver --silent).vsix" >> $GITHUB_ENV
+      run: echo "ARTIFACT_NAME=djinni-syntax-highlighting-$(npm run determineVersion --silent).vsix" >> $GITHUB_ENV
     - name: Upload Release Asset
       uses: actions/upload-release-asset@v1
       env:
