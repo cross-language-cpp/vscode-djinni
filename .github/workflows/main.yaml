@@ -29,11 +29,6 @@ jobs:
       with:
         name: extension-artifact
         path: ./${{ env.ARTIFACT_NAME }}
-    - name: Publish to Visual Studio Marketplace
-      if: startsWith( github.ref, 'refs/tags/releases/')
-      run: npm run publish
-      env:
-        VSCE_PAT: ${{ secrets.VSCE_PAT }}
     - name: Upload Release Asset
       if: startsWith( github.ref, 'refs/tags/releases/')
       uses: actions/upload-release-asset@v1
@@ -44,5 +39,11 @@ jobs:
         asset_path: ./${{ env.ARTIFACT_NAME }}
         asset_name: ${{ env.ARTIFACT_NAME }}
         asset_content_type: application/zip
+    - name: Publish to Visual Studio Marketplace
+      if: startsWith( github.ref, 'refs/tags/releases/')
+      run: npm run publish
+      env:
+        VSCE_PAT: ${{ secrets.VSCE_PAT }}
+    
     
 
