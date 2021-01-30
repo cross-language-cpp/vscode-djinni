@@ -42,8 +42,7 @@
         ]
     },
     "scripts": {
-        "determineVersion": "semver $(git describe --tags)",
-        "patchVersion": "npm version $(npm run determineVersion --silent)",
+        "patchVersion": "npm version $(git describe --tags)",
         "publish": "npm run patchVersion && vsce publish",
         "package": "npm run patchVersion && vsce package"
     },
