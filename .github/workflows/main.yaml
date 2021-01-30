@@ -26,11 +26,12 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: extension-artifact
-        path: ./${{ ls *.vsix }}
+        path: ./$(ls *.vsix)
     - name: debug ref
       run: echo ${{ github.event_name }}
 
   publish:
+    needs: package
     name: Publish Extension  
     runs-on: ubuntu-latest
     if: github.event_name == 'release'
@@ -54,8 +55,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: curl -sL https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r '.upload_url'
-        asset_path: ./${{ ls *.vsix }}
-        asset_name: ${{ ls *.vsix }}
+        asset_path: ./$(ls *.vsix)
+        asset_name: $(ls *.vsix)
         asset_content_type: application/zip
     - name: Publish to Visual Studio Marketplace
       run: npm run publish
