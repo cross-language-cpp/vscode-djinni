@@ -45,9 +45,9 @@ jobs:
         node-version: 10.x
     - run: npm install
     - uses: actions/download-artifact@v2
-        with:
-          name: extension-artifact
-          path: ./
+      with:
+        name: extension-artifact
+        path: ./
     - name: Upload Release Asset
       uses: actions/upload-release-asset@v1
       env:
