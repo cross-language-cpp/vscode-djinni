@@ -1,4 +1,4 @@
 site_name: vscode-djinni
 nav:
-  - about.md
+  - index.md
   - developer-guide.md
