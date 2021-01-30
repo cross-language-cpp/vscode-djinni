@@ -5,9 +5,7 @@
 
 :arrow_right: Documentation: [djinni.xlcpp.dev/vscode-djinni/](https://djinni.xlcpp.dev/vscode-djinni/)
 
-Really basic syntax highlighting for djinni interface files.
-
-More information about djinni: [djinni.xlcpp.dev](https://djinni.xlcpp.dev/)  
+Really basic syntax highlighting for djinni interface files.  
 
 ## Features
 
