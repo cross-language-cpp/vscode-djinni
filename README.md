@@ -14,3 +14,7 @@ Documentation: [djinni.xlcpp.dev/vscode-djinni/](https://djinni.xlcpp.dev/vscode
 ## License
 
 [MIT](https://mit-license.org/)
+
+## About
+
+This plugin is based on, and the continuation of the work of Patrik Minder, who created [the original and first version](https://marketplace.visualstudio.com/items?itemName=patrikminder.djinni-syntax-highlighting) of this plugin.
