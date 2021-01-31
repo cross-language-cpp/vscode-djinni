@@ -2,15 +2,16 @@
     "name": "djinni-syntax-highlighting",
     "displayName": "Djinni Syntax Highlighting",
     "description": "Syntax highlighting for djinni interface files",
-    "version": "1.0.3",
-    "publisher": "patrikminder",
+    "version": "0.0.0",
+    "publisher": "cross-language-cpp",
+    "icon": "icon.png",
     "author": {
-        "name": "Patrik Minder"
+        "name": "cross-language-cpp"
     },
-    "homepage": "https://github.com/Durza007/vscode-djinni",
+    "homepage": "https://djinni.xlcpp.dev/vscode-djinni/",
     "repository": {
         "type": "git",
-        "url": "https://github.com/Durza007/vscode-djinni"
+        "url": "https://github.com/cross-language-cpp/vscode-djinni"
     },
     "engines": {
         "vscode": "^1.30.0"
@@ -19,16 +20,34 @@
         "Programming Languages"
     ],
     "contributes": {
-        "languages": [{
-            "id": "djinni",
-            "aliases": ["Djinni", "djinni"],
-            "extensions": [".djinni"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "djinni",
-            "scopeName": "text.djinni",
-            "path": "./syntaxes/djinni.tmLanguage.json"
-        }]
+        "languages": [
+            {
+                "id": "djinni",
+                "aliases": [
+                    "Djinni",
+                    "djinni"
+                ],
+                "extensions": [
+                    ".djinni"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "djinni",
+                "scopeName": "text.djinni",
+                "path": "./syntaxes/djinni.tmLanguage.json"
+            }
+        ]
+    },
+    "scripts": {
+        "patchVersion": "npm version $(git describe --tags)",
+        "publish": "npm run patchVersion && vsce publish",
+        "package": "npm run patchVersion && vsce package"
+    },
+    "devDependencies": {
+        "semver": "^7.3.4",
+        "vsce": "^1.84.0"
     }
 }
