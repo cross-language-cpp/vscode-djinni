@@ -8,7 +8,7 @@
     "author": {
         "name": "cross-language-cpp"
     },
-    "homepage": "https://djinni.xlcpp.dev/",
+    "homepage": "https://djinni.xlcpp.dev/vscode-djinni/",
     "repository": {
         "type": "git",
         "url": "https://github.com/cross-language-cpp/vscode-djinni"
