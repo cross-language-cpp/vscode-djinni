@@ -8,9 +8,8 @@
 
 ### Build dependencies
 
-- [node](https://nodejs.org/) >= v14.12.0
-- [npm](https://www.npmjs.com/) >= 6.14.8
-- bash
+- [node](https://nodejs.org/)
+- [npm](https://www.npmjs.com/)
 
 ### Building
 
