@@ -22,11 +22,8 @@ npm run package # builds the .vsix package
 
 To release a new extension version, the following steps must be followed:
 
-1. Create a new release-tag. Set a meaningful version number and describe what has changed in the new version. The version must be parseable by [semver](https://docs.npmjs.com/cli/v6/using-npm/semver)! If you are not sure about that, you can check it:
-   ```bash
-   npm install -g semver # install semver
-   semver <versiontag> # check if the version can be parsed
-   ```
+1. Create a [new release](https://github.com/cross-language-cpp/vscode-djinni/releases/new) on Github. 
+   Set a tag version following [semantic versioning](https://semver.org/) rules (`v<MAJOR>.<MINOR>.<PATCH>`) and describe what has changed in the new version.
 2. Wait. Github will automatically build the extension, publish it to the [Visual Studio Marketplace](https://marketplace.visualstudio.com/publishers/cross-language-cpp) & upload the packaged extension to the release.
 
 That's it! :blush:
