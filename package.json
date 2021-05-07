@@ -47,7 +47,7 @@
         "package": "npm run patchVersion && vsce package"
     },
     "devDependencies": {
-        "semver": "^7.3.4",
-        "vsce": "^1.84.0"
+        "semver": "^7.3.5",
+        "vsce": "^1.88.0"
     }
 }
