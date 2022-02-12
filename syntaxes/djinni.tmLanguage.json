@@ -136,7 +136,7 @@
 		"record": {
 			"patterns": [
 				{
-					"begin": "(\\w+)\\s*(=)\\s*(record)\\s+((\\+[cjops]\\s+)*)({)",
+					"begin": "(\\w+)\\s*(=)\\s*(record)\\s+((\\+[cjopsw]\\s+)*)({)",
 					"beginCaptures": {
 						"1": { "name": "variable.name" },
 						"2": { "name": "keyword.operator.djinni" },
@@ -179,7 +179,7 @@
 		"interface": {
 			"patterns": [
 				{
-					"begin": "(\\w+)\\s*(=)\\s*(interface)\\s+((\\+[cjops]\\s+)*)({)",
+					"begin": "(\\w+)\\s*(=)\\s*(interface)\\s+((\\+[cjopsw]\\s+)*)({)",
 					"beginCaptures": {
 						"1": { "name": "variable.name" },
 						"2": { "name": "keyword.operator.djinni" },
