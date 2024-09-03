@@ -45,7 +45,7 @@ jobs:
       with:
         node-version: 10.x
     - run: npm install
-    - uses: actions/download-artifact@v2
+    - uses: actions/download-artifact@v4.1.7
       with:
         name: extension-artifact
         path: ./
