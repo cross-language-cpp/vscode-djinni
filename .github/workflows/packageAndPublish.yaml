@@ -14,18 +14,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v5
       with:
         fetch-depth: 0
     - name: Install Node.js
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v5
       with:
         node-version: 10.x
     - run: npm install
     - name: Package
       run: npm run package
     - name: Upload Artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: extension-artifact
         path: ./*.vsix
@@ -37,15 +37,15 @@ jobs:
     if: github.event_name == 'release'
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v5
       with:
         fetch-depth: 0
     - name: Install Node.js
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v5
       with:
         node-version: 10.x
     - run: npm install
-    - uses: actions/download-artifact@v4.1.7
+    - uses: actions/download-artifact@v5
       with:
         name: extension-artifact
         path: ./
